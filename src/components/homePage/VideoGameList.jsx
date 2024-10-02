@@ -21,8 +21,8 @@ const VideoGameList = () => {
       'pagination[page]': page,
       'pagination[pageSize]': 10,
       ...(filters.name ? { 'filters[name][$containsi]': filters.name } : {}),
-      ...(filters.score ? { 'filters[score]': filters.score } : {}),
-      ...(filters.sort ? { 'sort': filters.sort } : {}),
+      ...(filters.score ? { 'filters[score][$gte]': filters.score } : {}),
+      ...(filters.sort ? { 'filters[sort]': filters.sort } : {}),
     };
     return createUrlParamsFunction(baseQuery);
   };
