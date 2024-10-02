@@ -3,36 +3,10 @@ import axios from 'axios';
 import GameCard from '../common/GameCard';
 import FilterComponent from './FilterComponent';
 import LoadingSpinner from '../common/element/Loader';
-
-export const debounce = (func, delay) => {
-  let timeoutId;
-
-  const debouncedFunction = (...args) => {
-    if (timeoutId) clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => {
-      func(...args);
-    }, delay);
-  };
-
-  debouncedFunction.cancel = () => {
-    if (timeoutId) clearTimeout(timeoutId);
-  };
-
-  return debouncedFunction;
-};
-
-export const createUrlParamsFunction = (urlObject = {}, restrictedValue = []) => {
-  return new URLSearchParams(
-    Object.fromEntries(
-      Object.entries(urlObject).filter(
-        ([_, v]) =>
-          [...[null, undefined, "ALL", ""], ...restrictedValue].includes(v) !== true
-      )
-    )
-  ).toString();
-};
+import { createUrlParamsFunction, debounce } from '../../healperFunction';
 
 const VideoGameList = () => {
+
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);

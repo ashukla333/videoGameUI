@@ -30,7 +30,7 @@ const FilterComponent = ({ setFilters, handleClearFilters }) => {
       </div>
       <div className="mb-4">
         <label className="block text-sm text-white font-montserrat mb-2">
-          Score
+       Minimum   Score
         </label>
         <input
           type="text"
